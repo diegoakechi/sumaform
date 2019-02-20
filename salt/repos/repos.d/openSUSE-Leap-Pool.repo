@@ -1,9 +1,9 @@
 [openSUSE-Leap-{{ grains['osrelease'] }}-Pool]
 name=openSUSE-Leap-{{ grains['osrelease'] }}-Pool
 enabled=1
-{% if '12.' in grains['osrelease'] %}
+{% if grains['osmajorrelease'] == 42 %}
 baseurl=http://{{ grains.get("mirror") | default("download.opensuse.org", true) }}/distribution/leap/{{ grains['osrelease'] }}/repo/oss/suse/
-{% elif '15.' in grains['osrelease']  %}
+{% elif grains['osmajorrelease'] == 15 %}
 baseurl=http://{{ grains.get("mirror") | default("download.opensuse.org", true) }}/distribution/leap/{{ grains['osrelease'] }}/repo/oss/
 {% endif %}
 type=rpm-md
